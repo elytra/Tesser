@@ -1,0 +1,33 @@
+{
+	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
+	"textures": {
+		"core": "tesser:block/tesseract_core",
+		"frame": "tesser:block/tesseract_frame"
+	},
+	"elements": [
+		{
+			"from": [1, 1, 1],
+			"to": [15, 15, 15],
+			"faces": {
+				"north": {"uv": [1, 1, 15, 15], "texture": "#core"},
+				"east": {"uv": [1, 1, 15, 15], "texture": "#core"},
+				"south": {"uv": [1, 1, 15, 15], "texture": "#core"},
+				"west": {"uv": [1, 1, 15, 15], "texture": "#core"},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#core"},
+				"down": {"uv": [1, 1, 15, 15], "texture": "#core"}
+			}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#frame"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#frame"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#frame"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#frame"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#frame"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#frame"}
+			}
+		}
+	]
+}

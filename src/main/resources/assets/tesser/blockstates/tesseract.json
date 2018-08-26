@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "tesser:block/tesseract" }
+  }
+}

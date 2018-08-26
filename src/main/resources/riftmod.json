@@ -1,0 +1,12 @@
+{
+  "id": "tesser",
+  "name": "Tesser",
+  "version": "0.1.0",
+  "authors": [
+  ],
+  "listeners": [
+    "net.tinzin.tesser.Tesser",
+    "net.tinzin.tesser.TesserCore",
+    "net.tinzin.tesser.TesserClient"
+  ]
+}
