@@ -31,11 +31,7 @@ public class RenderTesserCrystal extends Render<EntityTesserCrystal> {
             GlStateManager.enableOutlineMode(this.getTeamColor(p_doRender_1_));
         }
 
-        if (p_doRender_1_.shouldShowBottom()) {
             this.modelEnderCrystal.render(p_doRender_1_, 0.0F, lvt_10_1_ * 3.0F, lvt_11_1_ * 0.2F, 0.0F, 0.0F, 0.0625F);
-        } else {
-            this.modelEnderCrystalNoBase.render(p_doRender_1_, 0.0F, lvt_10_1_ * 3.0F, lvt_11_1_ * 0.2F, 0.0F, 0.0F, 0.0625F);
-        }
 
         if (this.renderOutlines) {
             GlStateManager.disableOutlineMode();
@@ -52,6 +48,6 @@ public class RenderTesserCrystal extends Render<EntityTesserCrystal> {
     }
 
     public boolean shouldRender(EntityTesserCrystal p_shouldRender_1_, ICamera p_shouldRender_2_, double p_shouldRender_3_, double p_shouldRender_5_, double p_shouldRender_7_) {
-        return super.shouldRender(p_shouldRender_1_, p_shouldRender_2_, p_shouldRender_3_, p_shouldRender_5_, p_shouldRender_7_) || p_shouldRender_1_.getBeamTarget() != null;
+        return super.shouldRender(p_shouldRender_1_, p_shouldRender_2_, p_shouldRender_3_, p_shouldRender_5_, p_shouldRender_7_);
     }
 }

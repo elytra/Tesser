@@ -13,7 +13,18 @@ class EntityTesserCrystal(world: World) : Entity(Tesser.TESSER_CRYSTAL, world) {
     constructor(world: World, x : Double, y : Double, z : Double) : this(world) {
         this.setPosition(x, y, z)
     }
-    
+
+    @JvmField
+    var innerRotation: Int = 0
+
+    override fun onUpdate() {
+        this.prevPosX = this.posX
+        this.prevPosY = this.posY
+        this.prevPosZ = this.posZ
+        ++this.innerRotation
+
+    }
+
     override fun attackEntityFrom(source: DamageSource, damage: Float): Boolean {
         if (this.isEntityInvulnerable(source)) return false
         if (!this.isDead && !this.world.isRemote())
