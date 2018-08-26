@@ -12,6 +12,9 @@ class EntityTesserCrystal(world: World) : Entity(Tesser.TESSER_CRYSTAL, world) {
 
     constructor(world: World, x : Double, y : Double, z : Double) : this(world) {
         this.setPosition(x, y, z)
+        this.preventEntitySpawning = true
+        this.setSize(2.0f, 2.0f)
+        this.innerRotation = this.rand.nextInt(100000)
     }
 
     @JvmField
@@ -43,4 +46,13 @@ class EntityTesserCrystal(world: World) : Entity(Tesser.TESSER_CRYSTAL, world) {
     override fun readEntityFromNBT(compound: NBTTagCompound) {}
 
     override fun entityInit() {}
+
+    override fun canTriggerWalking(): Boolean {
+        return false
+    }
+
+    override fun canBeCollidedWith(): Boolean {
+        return true
+    }
+
 }

@@ -12,15 +12,14 @@ import net.minecraft.util.math.MathHelper;
 public class RenderTesserCrystal extends Render<EntityTesserCrystal> {
     private static final ResourceLocation ENDER_CRYSTAL_TEXTURES = new ResourceLocation("textures/entity/end_crystal/end_crystal.png");
     private final ModelBase modelEnderCrystal = new ModelEnderCrystal(0.0F, true);
-    private final ModelBase modelEnderCrystalNoBase = new ModelEnderCrystal(0.0F, false);
 
     public RenderTesserCrystal(RenderManager p_i46184_1_) {
         super(p_i46184_1_);
         this.shadowSize = 0.5F;
     }
 
-    public void doRender(EntityTesserCrystal p_doRender_1_, double p_doRender_2_, double p_doRender_4_, double p_doRender_6_, float p_doRender_8_, float p_doRender_9_) {
-        float lvt_10_1_ = (float)p_doRender_1_.innerRotation + p_doRender_9_;
+    public void doRender(EntityTesserCrystal entity, double p_doRender_2_, double p_doRender_4_, double p_doRender_6_, float p_doRender_8_, float p_doRender_9_) {
+        float lvt_10_1_ = (float)entity.innerRotation + p_doRender_9_;
         GlStateManager.pushMatrix();
         GlStateManager.translate((float)p_doRender_2_, (float)p_doRender_4_, (float)p_doRender_6_);
         this.bindTexture(ENDER_CRYSTAL_TEXTURES);
@@ -28,10 +27,10 @@ public class RenderTesserCrystal extends Render<EntityTesserCrystal> {
         lvt_11_1_ += lvt_11_1_ * lvt_11_1_;
         if (this.renderOutlines) {
             GlStateManager.enableColorMaterial();
-            GlStateManager.enableOutlineMode(this.getTeamColor(p_doRender_1_));
+            GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
 
-            this.modelEnderCrystal.render(p_doRender_1_, 0.0F, lvt_10_1_ * 3.0F, lvt_11_1_ * 0.2F, 0.0F, 0.0F, 0.0625F);
+            this.modelEnderCrystal.render(entity, 0.0F, lvt_10_1_ * 3.0F, lvt_11_1_ * 0.2F, 0.0F, 0.0F, 0.0625F);
 
         if (this.renderOutlines) {
             GlStateManager.disableOutlineMode();
@@ -40,7 +39,7 @@ public class RenderTesserCrystal extends Render<EntityTesserCrystal> {
 
         GlStateManager.popMatrix();
 
-        super.doRender(p_doRender_1_, p_doRender_2_, p_doRender_4_, p_doRender_6_, p_doRender_8_, p_doRender_9_);
+        super.doRender(entity, p_doRender_2_, p_doRender_4_, p_doRender_6_, p_doRender_8_, p_doRender_9_);
     }
 
     protected ResourceLocation getEntityTexture(EntityTesserCrystal p_getEntityTexture_1_) {

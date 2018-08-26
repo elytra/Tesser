@@ -8,7 +8,7 @@ import net.tinzin.tesser.entity.RenderTesserCrystal
 import org.dimdev.rift.listener.client.EntityRendererAdder
 
 class TesserClient : EntityRendererAdder {
-    override fun addEntityRenderers(entityRenderMap: MutableMap<Class<out Entity>, Render<out Entity>>?, renderManager: RenderManager?) {
-        entityRenderMap!![EntityTesserCrystal::class.java] = RenderTesserCrystal(renderManager)
+    override fun addEntityRenderers(entityRenderMap: MutableMap<Class<out Entity>, Render<out Entity>>, renderManager: RenderManager?) {
+        entityRenderMap[EntityTesserCrystal::class.java] = RenderTesserCrystal(renderManager)
     }
 }
