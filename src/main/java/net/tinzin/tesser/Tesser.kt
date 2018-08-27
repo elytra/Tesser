@@ -9,6 +9,7 @@ import net.minecraft.entity.item.EntityEnderCrystal
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
 import net.minecraft.util.ResourceLocation
+import net.tinzin.tesser.blocks.BlockTransparent
 import net.tinzin.tesser.entity.EntityTesserCrystal
 import org.dimdev.rift.listener.BlockAdder
 import org.dimdev.rift.listener.EntityTypeAdder
@@ -35,7 +36,7 @@ class Tesser : BlockAdder, ItemAdder, EntityTypeAdder {
 
     companion object {
 
-        val TESSERACT = Block(Block.Builder.create(Material.GLASS, MapColor.PURPLE).hardnessAndResistance(6f, 6f).sound(SoundType.GLASS))
+        val TESSERACT = BlockTransparent()
 
         lateinit var TESSER_CRYSTAL: EntityType<EntityTesserCrystal>
             private set
