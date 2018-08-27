@@ -38,7 +38,6 @@ public abstract class MixinItemEndCrystal {
     private static boolean placeTesserCrystal(World world, BlockPos pos) {
         BlockPos placePos = pos.up();
         List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity((Entity)null, new AxisAlignedBB(placePos.getX(), placePos.getY(), placePos.getZ(), placePos.getX() + 1.0D, placePos.getY() + 2.0D, placePos.getZ() + 1.0D));
-        System.out.println(entities);
         if (entities.isEmpty() && !world.isRemote()) {
             EntityTesserCrystal crystal = new EntityTesserCrystal(world, placePos.getX() + 0.5D, placePos.getY(), placePos.getZ() + 0.5D);
             world.spawnEntity(crystal);
