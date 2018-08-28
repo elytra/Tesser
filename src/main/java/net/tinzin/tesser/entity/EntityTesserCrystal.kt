@@ -9,32 +9,35 @@ import net.minecraft.util.DamageSource
 import net.minecraft.util.SoundCategory
 import net.minecraft.world.World
 import net.tinzin.tesser.Tesser
+import kotlin.math.pow
 
 class EntityTesserCrystal(world: World) : Entity(Tesser.TESSER_CRYSTAL, world) {
 
     var timeLeft : Int = 100
     @JvmField
-    var innerRotation: Int = 0
+    var innerRotation: Float = this.rand.nextInt(100000).toFloat()
+    var bounceHeight: Int = this.rand.nextInt(100000)
 
     constructor(world: World, x : Double, y : Double, z : Double) : this(world) {
         this.setPosition(x, y, z)
         this.preventEntitySpawning = true
         this.setSize(2.0f, 2.0f)
-        this.innerRotation = this.rand.nextInt(100000)
         this.timeLeft = 100
     }
 
     override fun onUpdate() {
-        if (timeLeft <= 0) {
+        if (timeLeft <= 0 && !world.isRemote) {
             this.setDead()
-            world.playSound(posX, posY, posZ, SoundEvents.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, SoundCategory.BLOCKS, 1.0f, 1.0f, true)
+            this.world.createExplosion(null as Entity?, this.posX, this.posY, this.posZ, 4.0f, false)
             InventoryHelper.spawnItemStack(world, posX, posY, posZ, ItemStack(Tesser.TESSERACT))
         }
         else --timeLeft
         this.prevPosX = this.posX
         this.prevPosY = this.posY
         this.prevPosZ = this.posZ
-        this.innerRotation += (100-timeLeft) * 5
+        ++bounceHeight
+        this.innerRotation += 2.toFloat().pow((100-timeLeft)/20.toFloat())
+        super.onUpdate()
     }
 
 //    override fun attackEntityFrom(source: DamageSource, damage: Float): Boolean {

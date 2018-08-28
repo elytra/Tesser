@@ -19,18 +19,19 @@ public class RenderTesserCrystal extends Render<EntityTesserCrystal> {
     }
 
     public void doRender(EntityTesserCrystal entity, double p_doRender_2_, double p_doRender_4_, double p_doRender_6_, float p_doRender_8_, float p_doRender_9_) {
-        float lvt_10_1_ = (float)entity.innerRotation + p_doRender_9_;
+        float rotation = (float)entity.innerRotation + p_doRender_9_;
+        float bounce = (float)entity.getBounceHeight() + p_doRender_9_;
         GlStateManager.pushMatrix();
         GlStateManager.translate((float)p_doRender_2_, (float)p_doRender_4_, (float)p_doRender_6_);
         this.bindTexture(ENDER_CRYSTAL_TEXTURES);
-        float lvt_11_1_ = MathHelper.sin(lvt_10_1_ * 0.2F) / 2.0F + 0.5F;
-        lvt_11_1_ += lvt_11_1_ * lvt_11_1_;
+        float sineHeight = MathHelper.sin(bounce * 0.2F) / 2.0F + 0.5F;
+        sineHeight += sineHeight * sineHeight;
         if (this.renderOutlines) {
             GlStateManager.enableColorMaterial();
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
 
-            this.modelEnderCrystal.render(entity, 0.0F, lvt_10_1_ * 3.0F, lvt_11_1_ * 0.2F, 0.0F, 0.0F, 0.0625F);
+            this.modelEnderCrystal.render(entity, 0.0F, rotation * 2.0F, sineHeight * 0.2F, 0.0F, 0.0F, 0.0625F);
 
         if (this.renderOutlines) {
             GlStateManager.disableOutlineMode();

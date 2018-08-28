@@ -6,6 +6,9 @@
    "package": "net.tinzin.tesser.mixin",
    "refmap": "mixins.tesser.refmap.json",
    "mixins": [
-     "MixinItemEndCrystal"
+     "MixinItemEndCrystal",
+     "MixinEntityTracker",
+     "MixinEntityTrackerEntry",
+     "MixinNetHandlerPlayClient"
    ]
  }
