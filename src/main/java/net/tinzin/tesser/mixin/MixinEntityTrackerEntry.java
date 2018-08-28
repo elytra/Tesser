@@ -22,7 +22,7 @@ public class MixinEntityTrackerEntry
     @Shadow @Final private Entity trackedEntity;
 
     @Inject(method = "createSpawnPacket", at = @At("INVOKE"), cancellable = true)
-    private void createAetherSpawnPacket(CallbackInfoReturnable<Packet<?>> info)
+    private void createTesserSpawnPacket(CallbackInfoReturnable<Packet<?>> info)
     {
         if (this.trackedEntity instanceof EntityTesserCrystal)
         {

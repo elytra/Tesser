@@ -20,7 +20,7 @@ public class MixinNetHandlerPlayClient
     @Shadow private WorldClient world;
 
     @Inject(method = "handleSpawnObject", at = @At("RETURN"))
-    public void handleAetherSpawnObject(SPacketSpawnObject packetIn, CallbackInfo ci)
+    public void handleTesserSpawnObject(SPacketSpawnObject packetIn, CallbackInfo ci)
     {
         double d0 = packetIn.getX();
         double d1 = packetIn.getY();

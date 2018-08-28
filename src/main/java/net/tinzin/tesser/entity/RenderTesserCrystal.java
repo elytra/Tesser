@@ -11,7 +11,7 @@ import net.minecraft.util.math.MathHelper;
 
 public class RenderTesserCrystal extends Render<EntityTesserCrystal> {
     private static final ResourceLocation ENDER_CRYSTAL_TEXTURES = new ResourceLocation("textures/entity/end_crystal/end_crystal.png");
-    private final ModelBase modelEnderCrystal = new ModelEnderCrystal(0.0F, true);
+    private final ModelBase modelEnderCrystal = new ModelEnderCrystal(0.0F, false);
 
     public RenderTesserCrystal(RenderManager p_i46184_1_) {
         super(p_i46184_1_);

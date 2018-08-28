@@ -26,6 +26,9 @@ class EntityTesserCrystal(world: World) : Entity(Tesser.TESSER_CRYSTAL, world) {
     }
 
     override fun onUpdate() {
+        if (timeLeft == 75) {
+            world.playSound(posX, posY, posZ, SoundEvents.BLOCK_PORTAL_TRIGGER, SoundCategory.AMBIENT, 1f, 1f, true)
+        }
         if (timeLeft <= 0 && !world.isRemote) {
             this.setDead()
             this.world.createExplosion(null as Entity?, this.posX, this.posY, this.posZ, 4.0f, false)
