@@ -1,12 +1,16 @@
 package net.tinzin.tesser.entity
 
+import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.Entity
 import net.minecraft.init.SoundEvents
 import net.minecraft.inventory.InventoryHelper
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
+import net.minecraft.tileentity.TileEntity
+import net.minecraft.tileentity.TileEntityBeacon
 import net.minecraft.util.DamageSource
 import net.minecraft.util.SoundCategory
+import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.tinzin.tesser.Tesser
 import kotlin.math.pow
@@ -34,7 +38,15 @@ class EntityTesserCrystal(world: World) : Entity(Tesser.TESSER_CRYSTAL, world) {
             this.world.createExplosion(null as Entity?, this.posX, this.posY, this.posZ, 4.0f, false)
             InventoryHelper.spawnItemStack(world, posX, posY, posZ, ItemStack(Tesser.TESSERACT))
         }
-        else --timeLeft
+        else {
+            val te: TileEntity? =  world.getTileEntity(BlockPos(posX, posY-1, posZ))
+            if (te != null && te is TileEntityBeacon ) {
+                val beacon: TileEntityBeacon = te
+                if (beacon.levels > 0) {
+                    --timeLeft
+                } else timeLeft = 100
+            }
+        }
         this.prevPosX = this.posX
         this.prevPosY = this.posY
         this.prevPosZ = this.posZ
